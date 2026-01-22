@@ -2,10 +2,18 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware # ייבוא התוסף לתיקון השגיאה
 from Recipe import Recipe
-from Connection.Connection import *
+
 import uvicorn
 from gemeni import *
+import sys
+import os
 
+# מוסיף את תיקיית האב 'פייטון' לנתיבי החיפוש
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+from Connection.Connection import *
 app = FastAPI(title="Recipes API")
 
 app.mount(
